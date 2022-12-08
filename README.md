@@ -1,0 +1,1 @@
+# ativi-jwr-typeorm
