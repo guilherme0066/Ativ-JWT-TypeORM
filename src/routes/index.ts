@@ -1,19 +1,14 @@
 import { Router, Request, Response } from "express";
-import cliente from './cliente';
-import colaborador from './colaborador';
-import projeto from "./projeto";
-import turno from './turno';
-import { colaborador as colaboradorController } from "../controllers";
+import UserController from "../controllers/UserController";
 import { authorization } from "../middlewares";
+import department from "./department";
+import user from "./user";
+
 const routes = Router();
 
-routes.use("/cliente", authorization, cliente);
-routes.use("/colaborador", authorization, colaborador);
-routes.use("/projeto", authorization, projeto);
-routes.use("/turno", authorization, turno);
-routes.post("/login", colaboradorController.login);
-
-//aceita qualquer método HTTP ou URL
+routes.post('/login', UserController.login)
+routes.use('/user', authorization, user);
+routes.use('/department', authorization, department);
 routes.use((req: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 
 export default routes;

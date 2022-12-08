@@ -1,13 +1,16 @@
 import * as express from "express";
-import* as cors from "cors";
+import * as cors from "cors";
 import * as dotenv from "dotenv";
+import routes from "./routes";
 
+dotenv.config();
 
-dotenv.config();    //precisa ser chamado no início do arquivo
-const PORT = process.env.PORT || 3000;      //lê a variável PORT do arquivo .env
-const app = express();      // cria o servidor
-app.use(express.json());       // suporta parâmetros JSON nobody da requisição
-app.use(cors());      // suporta requisições de qualquer domínio
+const PORT = process.env.PORT || 3000;
 
-// inicializao servidor na porta especificada
-app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
+const app = express();
+app.use(express.json())
+app.use(cors());
+
+app.use(routes)
+
+app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))

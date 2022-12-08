@@ -1,11 +1,7 @@
-import cliente from './ClienteController';
-import colaborador from './ColaboradorController';
-import projeto from './ProjetoController';
-import turno from './TurnoController';
+import department from './DepartmentController';
+import user from './UserController';
 
 export {
-    cliente,
-    colaborador,
-    projeto,
-    turno
+    user, 
+    department
 }
